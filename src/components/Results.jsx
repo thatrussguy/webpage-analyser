@@ -1,3 +1,4 @@
+import cheerio from "cheerio";
 import React, { useEffect, useState } from "react";
 
 import Error from "../components/Error";
@@ -27,10 +28,15 @@ const Results = ({ url }) => {
   return (
     <div>
       <h2>Query results</h2>
-      {pageContents && pageContents}
+      {pageContents && <p>Page title: {getPageTitle(pageContents)}</p>}
       {error && <Error error={error} />}
     </div>
   );
+};
+
+const getPageTitle = html => {
+  const $ = cheerio.load(html);
+  return $("title").text();
 };
 
 export default Results;
