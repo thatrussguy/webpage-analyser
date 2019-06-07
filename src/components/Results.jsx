@@ -28,7 +28,12 @@ const Results = ({ url }) => {
   return (
     <div>
       <h2>Query results</h2>
-      {pageContents && <p>Page title: {getPageTitle(pageContents)}</p>}
+      {pageContents && (
+        <div>
+          <p>Page title: {getPageTitle(pageContents)}</p>
+          <p>Link count: {getLinks(pageContents).length}</p>
+        </div>
+      )}
       {error && <Error error={error} />}
     </div>
   );
@@ -37,6 +42,15 @@ const Results = ({ url }) => {
 const getPageTitle = html => {
   const $ = cheerio.load(html);
   return $("title").text();
+};
+const getLinks = html => {
+  const links = [];
+  const $ = cheerio.load(html);
+  $("a").each((_, link) => {
+    links.push($(link).attr("href"));
+  });
+  console.log(links);
+  return links;
 };
 
 export default Results;
