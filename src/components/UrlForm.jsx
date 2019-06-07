@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
-const UrlForm = () => {
+const UrlForm = ({ setUrl }) => {
+  const [urlInput, setUrlInput] = useState("");
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    setUrl(urlInput);
+  };
+
   return (
-    <form>
-      <input />
+    <form onSubmit={handleSubmit}>
+      <input onChange={({ target: { value } }) => setUrlInput(value)} />
       <button>Analyse</button>
     </form>
   );
