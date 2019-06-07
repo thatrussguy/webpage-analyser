@@ -8,11 +8,11 @@ import fetchPageContents from "../page-functions/fetchPageContents";
 const Results = ({ url }) => {
   const [error, setError] = useState(null);
   const [pageContents, setPageContents] = useState(null);
-
   useEffect(() => {
     let mounted = true;
 
     const fetchData = async () => {
+      mounted && setError(null);
       const pageContents = await fetchPageContents(url).catch(
         ({ message }) => mounted && setError(message)
       );
@@ -23,7 +23,7 @@ const Results = ({ url }) => {
     return () => {
       mounted = false;
     };
-  }, [error, url]);
+  }, [url]);
 
   return (
     <div>
