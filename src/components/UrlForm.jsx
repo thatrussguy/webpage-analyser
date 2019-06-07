@@ -11,7 +11,7 @@ const UrlForm = ({ setUrl }) => {
   return (
     <form onSubmit={handleSubmit}>
       <input onChange={({ target: { value } }) => setUrlInput(value)} />
-      <button>Analyse</button>
+      <button disabled={!urlInput}>Analyse</button>
     </form>
   );
 };
