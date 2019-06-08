@@ -1,13 +1,21 @@
-import cheerio from "cheerio";
 import React, { useEffect, useState } from "react";
 
 import Error from "../components/Error";
+import UniqueDomains from "../components/UniqueDomains";
 
 import fetchPageContents from "../page-functions/fetchPageContents";
+import {
+  getDomainsFromLinks,
+  getLinks,
+  getPageTitle
+} from "../page-functions/parsePageContents";
 
 const Results = ({ url }) => {
+  const [domains, setDomains] = useState(null);
   const [error, setError] = useState(null);
+  const [links, setLinks] = useState([]);
   const [pageContents, setPageContents] = useState(null);
+
   useEffect(() => {
     let mounted = true;
 
@@ -16,7 +24,11 @@ const Results = ({ url }) => {
       const pageContents = await fetchPageContents(url).catch(
         ({ message }) => mounted && setError(message)
       );
+      const links = getLinks(pageContents);
       mounted && setPageContents(pageContents);
+      mounted && setLinks(links);
+      const domains = getDomainsFromLinks(links);
+      mounted && setDomains(domains.length ? domains : null);
     };
     fetchData();
 
@@ -30,27 +42,16 @@ const Results = ({ url }) => {
       <h2>Query results</h2>
       {pageContents && (
         <div>
-          <p>Page title: {getPageTitle(pageContents)}</p>
-          <p>Link count: {getLinks(pageContents).length}</p>
+          <h3>Page title:</h3>
+          <p>{getPageTitle(pageContents)}</p>
+          <h3>Link count:</h3>
+          <p>{links.length}</p>
+          {domains && <UniqueDomains domains={[...new Set(domains)]} />}
         </div>
       )}
       {error && <Error error={error} />}
     </div>
   );
-};
-
-const getPageTitle = html => {
-  const $ = cheerio.load(html);
-  return $("title").text();
-};
-const getLinks = html => {
-  const links = [];
-  const $ = cheerio.load(html);
-  $("a").each((_, link) => {
-    links.push($(link).attr("href"));
-  });
-  console.log(links);
-  return links;
 };
 
 export default Results;
