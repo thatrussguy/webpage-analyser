@@ -42,7 +42,9 @@ const Results = ({ url }) => {
 
   return (
     <div>
-      <h2>Query results</h2>
+      <h2>
+        Query results for <a href={url}>{url}</a>
+      </h2>
       {pageContents && (
         <div>
           <h3>Page title:</h3>
