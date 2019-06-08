@@ -21,14 +21,17 @@ const Results = ({ url }) => {
 
     const fetchData = async () => {
       mounted && setError(null);
-      const pageContents = await fetchPageContents(url).catch(
-        ({ message }) => mounted && setError(message)
-      );
-      const links = getLinks(pageContents);
-      mounted && setPageContents(pageContents);
-      mounted && setLinks(links);
-      const domains = getDomainsFromLinks(links);
-      mounted && setDomains(domains.length ? domains : null);
+      const pageContents = await fetchPageContents(url).catch(({ message }) => {
+        mounted && setError(message);
+        mounted && setPageContents(null);
+      });
+      if (pageContents) {
+        const links = getLinks(pageContents);
+        mounted && setPageContents(pageContents);
+        mounted && setLinks(links);
+        const domains = getDomainsFromLinks(links);
+        mounted && setDomains(domains.length ? domains : null);
+      }
     };
     fetchData();
 
