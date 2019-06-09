@@ -5,11 +5,7 @@ const UrlForm = ({ setUrl }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    setUrl(
-      urlInput.startsWith("http://") || urlInput.startsWith("https://")
-        ? urlInput
-        : `http://${urlInput}`
-    );
+    setUrl(urlInput);
   };
 
   return (
