@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import Error from "../components/Error";
+import SecuritySummary from "../components/SecuritySummary";
 import UniqueDomains from "../components/UniqueDomains";
 
 import fetchPageContents from "../page-functions/fetchPageContents";
@@ -43,7 +44,18 @@ const Results = ({ url }) => {
   return (
     <div>
       <h2>
-        Query results for <a href={url}>{url}</a>
+        Query results for{" "}
+        <a
+          href={
+            url.startsWith("http:") || url.startsWith("https:")
+              ? url
+              : `//${url}`
+          }
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {url}
+        </a>
       </h2>
       {pageContents && (
         <div>
@@ -52,6 +64,7 @@ const Results = ({ url }) => {
           <h3>Link count:</h3>
           <p>{links.length}</p>
           {domains && <UniqueDomains domains={[...new Set(domains)]} />}
+          <SecuritySummary url={url} />
         </div>
       )}
       {error && <Error error={error} />}
