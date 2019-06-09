@@ -60,7 +60,7 @@ const Results = ({ url }) => {
       {pageContents && (
         <div>
           <h3>Page title:</h3>
-          <p>{getPageTitle(pageContents)}</p>
+          <p>{getPageTitle(pageContents) || "No title found"}</p>
           <h3>Link count:</h3>
           <p>{links.length}</p>
           {domains && <UniqueDomains domains={[...new Set(domains)]} />}
