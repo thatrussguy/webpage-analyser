@@ -22,13 +22,16 @@ const Results = ({ url }) => {
 
     const fetchData = async () => {
       mounted && setError(null);
-      const pageContents = await fetchPageContents(url).catch(({ message }) => {
-        mounted && setError(message);
-        mounted && setPageContents(null);
-      });
+      const { pageContents, error } = await fetchPageContents(url).catch(
+        ({ message }) => {
+          mounted && setError(message);
+          mounted && setPageContents(null);
+        }
+      );
+      mounted && setPageContents(pageContents);
+      mounted && setError(error);
       if (pageContents) {
         const links = getLinks(pageContents);
-        mounted && setPageContents(pageContents);
         mounted && setLinks(links);
         const domains = getDomainsFromLinks(links);
         mounted && setDomains(domains.length ? domains : null);
