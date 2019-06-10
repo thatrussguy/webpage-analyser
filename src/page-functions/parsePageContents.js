@@ -1,5 +1,8 @@
 import cheerio from "cheerio";
 
+const checkForGoogleAnalytics = html => {
+  return /google-analytics.com\/analytics.js/i.test(html);
+};
 const getDomainsFromLinks = links => {
   return links
     .filter(url => url && url.startsWith("http"))
@@ -20,4 +23,4 @@ const getPageTitle = html => {
   return $("title").text();
 };
 
-export { getDomainsFromLinks, getLinks, getPageTitle };
+export { checkForGoogleAnalytics, getDomainsFromLinks, getLinks, getPageTitle };

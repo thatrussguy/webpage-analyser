@@ -6,6 +6,7 @@ import UniqueDomains from "../components/UniqueDomains";
 
 import fetchPageContents from "../page-functions/fetchPageContents";
 import {
+  checkForGoogleAnalytics,
   getDomainsFromLinks,
   getLinks,
   getPageTitle
@@ -14,6 +15,7 @@ import {
 const Results = ({ url }) => {
   const [domains, setDomains] = useState(null);
   const [error, setError] = useState(null);
+  const [googleAnalytics, setGoogleAnalytics] = useState(null);
   const [links, setLinks] = useState([]);
   const [pageContents, setPageContents] = useState(null);
 
@@ -35,6 +37,7 @@ const Results = ({ url }) => {
         mounted && setLinks(links);
         const domains = getDomainsFromLinks(links);
         mounted && setDomains(domains.length ? domains : null);
+        mounted && setGoogleAnalytics(checkForGoogleAnalytics(pageContents));
       }
     };
     fetchData();
@@ -68,6 +71,8 @@ const Results = ({ url }) => {
           <p>{links.length}</p>
           {domains && <UniqueDomains domains={[...new Set(domains)]} />}
           <SecuritySummary url={url} />
+          <h3>Google Analytics available?</h3>
+          <p>{googleAnalytics ? "Yes" : "No"}</p>
         </div>
       )}
       {error && <Error error={error} />}
