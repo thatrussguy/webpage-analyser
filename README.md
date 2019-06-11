@@ -14,6 +14,8 @@ Enter a URL to perform an analysis...
 - details of the pages SSL certificate
 - whether or not Google Analytics is running on the page
 
+![Screenshot](/screenshot.png?raw=true "Screenshot")
+
 ## Built With
 
 - [Axios](https://github.com/axios/axios)
