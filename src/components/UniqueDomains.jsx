@@ -2,14 +2,14 @@ import React from "react";
 
 const UniqueDomains = ({ domains }) => {
   return (
-    <div>
-      <h3>
+    <details>
+      <summary>
         {domains.length} Unique Domain{domains.length > 1 ? "s" : ""}:
-      </h3>
+      </summary>
       {domains.map(domain => (
         <p key={domain}>{domain}</p>
       ))}
-    </div>
+    </details>
   );
 };
 
