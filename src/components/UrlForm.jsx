@@ -10,7 +10,10 @@ const UrlForm = ({ setUrl }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input onChange={({ target: { value } }) => setUrlInput(value)} />
+      <input
+        onChange={({ target: { value } }) => setUrlInput(value)}
+        placeHolder={"Enter a URL"}
+      />
       <button disabled={!urlInput}>Analyse</button>
     </form>
   );
