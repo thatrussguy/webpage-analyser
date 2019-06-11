@@ -1,10 +1,6 @@
 import React from "react";
 
-const Error = ({
-  error: {
-    config: { url }
-  }
-}) => {
+const Error = ({ url }) => {
   return <p>Could not read page contents from {url}</p>;
 };
 

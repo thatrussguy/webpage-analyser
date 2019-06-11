@@ -26,7 +26,7 @@ const Results = ({ url }) => {
       mounted && setError(null);
       const { pageContents, error } = await fetchPageContents(url).catch(
         ({ message }) => {
-          mounted && setError(message);
+          mounted && setError({ message });
           mounted && setPageContents(null);
         }
       );
@@ -75,7 +75,7 @@ const Results = ({ url }) => {
           <p>{googleAnalytics ? "Yes" : "No"}</p>
         </div>
       )}
-      {error && <Error error={error} />}
+      {error && <Error error={error} url={url} />}
     </div>
   );
 };
