@@ -1,0 +1,39 @@
+.App {
+  margin-left: 5vh;
+  margin-right: 5vh;
+  margin-top: 10vh;
+}
+button {
+  font-size: 1em;
+}
+input {
+  font-size: 1em;
+  margin-right: 1vw;
+}
+.page-title,
+.links,
+.secure,
+.insecure,
+.google-analytics {
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+.insecure {
+  background-color: rgb(255, 200, 200);
+}
+.secure {
+  background-color: rgb(200, 255, 200);
+}
+.results {
+  margin-top: 2vh;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 10px 10px #888888;
+}
+
+@media only screen and (min-width: 800px) {
+  .App {
+    margin-left: 20vw;
+    margin-right: 20vw;
+  }
+}

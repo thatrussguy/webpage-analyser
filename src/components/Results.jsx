@@ -48,7 +48,7 @@ const Results = ({ url }) => {
   }, [url]);
 
   return (
-    <div>
+    <div className="results">
       <h2>
         Query results for{" "}
         <a
@@ -65,14 +65,20 @@ const Results = ({ url }) => {
       </h2>
       {pageContents && (
         <div>
-          <h3>Page title:</h3>
-          <p>{getPageTitle(pageContents) || "No title found"}</p>
-          <h3>Link count:</h3>
-          <p>{links.length}</p>
-          {domains && <UniqueDomains domains={[...new Set(domains)]} />}
+          <div className={"page-title"}>
+            <h3>Page title:</h3>
+            <p>{getPageTitle(pageContents) || "No title found"}</p>
+          </div>
+          <div className="links">
+            <h3>Link count:</h3>
+            <p>{links.length}</p>
+            {domains && <UniqueDomains domains={[...new Set(domains)]} />}
+          </div>
           <SecuritySummary url={url} />
-          <h3>Google Analytics available?</h3>
-          <p>{googleAnalytics ? "Yes" : "No"}</p>
+          <div className="google-analytics">
+            <h3>Google Analytics available?</h3>
+            <p>{googleAnalytics ? "Yes" : "No"}</p>
+          </div>
         </div>
       )}
       {error && <Error error={error} url={url} />}

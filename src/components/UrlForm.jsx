@@ -11,8 +11,9 @@ const UrlForm = ({ setUrl }) => {
   return (
     <form className="url-form" onSubmit={handleSubmit}>
       <input
+        className="url-input"
         onChange={({ target: { value } }) => setUrlInput(value)}
-        placeHolder={"Enter a URL"}
+        placeholder={"Enter a URL"}
       />
       <button disabled={!urlInput}>Analyse</button>
     </form>

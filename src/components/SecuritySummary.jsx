@@ -22,7 +22,7 @@ const UniqueDomains = ({ url }) => {
   }, [url]);
 
   return (
-    <div>
+    <div className={sslDetails && sslDetails.valid ? "secure" : "insecure"}>
       <h3>Security Summary:</h3>
       <p>
         Is a valid SSL certificate available for {url}?{" "}
