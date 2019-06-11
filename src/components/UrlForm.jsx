@@ -9,7 +9,7 @@ const UrlForm = ({ setUrl }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="url-form" onSubmit={handleSubmit}>
       <input
         onChange={({ target: { value } }) => setUrlInput(value)}
         placeHolder={"Enter a URL"}
