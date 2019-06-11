@@ -1,68 +1,57 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Webpage Analyser
 
-## Available Scripts
+[![Netlify Status](https://api.netlify.com/api/v1/badges/75deca42-7374-44d2-9708-1399932ccfc2/deploy-status)](https://app.netlify.com/sites/russ-webpage-analyser/deploys)
 
-In the project directory, you can run:
+[Try it out (hosted on Netlify)](https://russ-webpage-analyser.netlify.com)
 
-### `npm start`
+Enter a URL to perform an analysis...
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## If possible, the following information will be returned:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- \<title> of the page
+- number of clickable links
+- number of unique domains that these links point to
+- details of the pages SSL certificate
+- whether or not Google Analytics is running on the page
 
-### `npm test`
+## Built With
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Axios](https://github.com/axios/axios)
+- [Cheerio](https://github.com/cheeriojs/cheerio)
+- [Create React App](https://facebook.github.io/create-react-app/)
+- [Node 12](https://nodejs.org)
+- [React 16.8 (the one with hooks)](https://reactjs.org/)
+- [Webpage-analyser-api](https://github.com/thatrussguy/webpage-analyser-api)
 
-### `npm run build`
+## Set up a copy to try out locally
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- [Git CLI (version >= 2)](https://git-scm.com/)
+- [Node (version >= 10.15.3)](https://nodejs.org)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Instructions
 
-### `npm run eject`
+Clone this repo
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+git clone https://github.com/thatrussguy/webpage-analyser.git
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Open project folder
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+cd webpage-analyser
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Install dependencies
 
-## Learn More
+```bash
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Start the app locally
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```bash
+npm start
+```
