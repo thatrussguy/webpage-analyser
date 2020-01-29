@@ -31,8 +31,8 @@ const UniqueDomains = ({ url }) => {
       {sslDetails && (
         <details>
           <summary>More details...</summary>
-          <p>Valid from: {sslDetails.validFrom}</p>
-          <p>Valid to: {sslDetails.validTo}</p>
+          <p>Valid from: {new Date(sslDetails.validFrom).toLocaleString("en-GB")}</p>
+          <p>Valid to: {new Date(sslDetails.validTo).toLocaleString("en-GB")}</p>
           <p>Days remaining until expiration: {sslDetails.daysRemaining}</p>
           <p>
             Note: HTTPS is only protecting your data while in transit. There
